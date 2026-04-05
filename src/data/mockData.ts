@@ -1,3 +1,12 @@
+import amazonLogo from "@/assets/logos/amazon.png";
+import microsoftLogo from "@/assets/logos/microsoft.png";
+import googleLogo from "@/assets/logos/google.png";
+import oracleLogo from "@/assets/logos/oracle.png";
+import goldmanSachsLogo from "@/assets/logos/goldman-sachs.png";
+import infosysLogo from "@/assets/logos/infosys.png";
+import tcsLogo from "@/assets/logos/tcs.png";
+import metaLogo from "@/assets/logos/meta.png";
+
 export interface Company {
   name: string;
   logo: string;
@@ -14,7 +23,7 @@ export interface Experience {
   difficulty: "Easy" | "Medium" | "Hard";
   rounds: number;
   problems: number;
-  status: "Selected" | "Rejected";
+  status: "Selected" | "Rejected" | "Ongoing";
   tags: string[];
   workType: "Remote" | "Onsite" | "Hybrid";
   experienceLevel: string;
@@ -23,15 +32,26 @@ export interface Experience {
   createdAt: string;
 }
 
+export const companyLogos: Record<string, string> = {
+  Amazon: amazonLogo,
+  Microsoft: microsoftLogo,
+  Google: googleLogo,
+  Oracle: oracleLogo,
+  "Goldman Sachs": goldmanSachsLogo,
+  Infosys: infosysLogo,
+  TCS: tcsLogo,
+  Meta: metaLogo,
+};
+
 export const companies: Company[] = [
-  { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com", type: "Product Based", experienceCount: 42 },
-  { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com", type: "Product Based", experienceCount: 38 },
-  { name: "Google", logo: "https://logo.clearbit.com/google.com", type: "Product Based", experienceCount: 55 },
-  { name: "Oracle", logo: "https://logo.clearbit.com/oracle.com", type: "Product Based", experienceCount: 21 },
-  { name: "Goldman Sachs", logo: "https://logo.clearbit.com/goldmansachs.com", type: "Product Based", experienceCount: 18 },
-  { name: "Infosys", logo: "https://logo.clearbit.com/infosys.com", type: "Service Based", experienceCount: 30 },
-  { name: "TCS", logo: "https://logo.clearbit.com/tcs.com", type: "Service Based", experienceCount: 25 },
-  { name: "Meta", logo: "https://logo.clearbit.com/meta.com", type: "Product Based", experienceCount: 33 },
+  { name: "Amazon", logo: amazonLogo, type: "Product Based", experienceCount: 42 },
+  { name: "Microsoft", logo: microsoftLogo, type: "Product Based", experienceCount: 38 },
+  { name: "Google", logo: googleLogo, type: "Product Based", experienceCount: 55 },
+  { name: "Oracle", logo: oracleLogo, type: "Product Based", experienceCount: 21 },
+  { name: "Goldman Sachs", logo: goldmanSachsLogo, type: "Product Based", experienceCount: 18 },
+  { name: "Infosys", logo: infosysLogo, type: "Service Based", experienceCount: 30 },
+  { name: "TCS", logo: tcsLogo, type: "Service Based", experienceCount: 25 },
+  { name: "Meta", logo: metaLogo, type: "Product Based", experienceCount: 33 },
 ];
 
 export const mockExperiences: Experience[] = [
@@ -39,7 +59,7 @@ export const mockExperiences: Experience[] = [
     id: "1",
     userId: "u1",
     company: "Amazon",
-    companyLogo: "https://logo.clearbit.com/amazon.com",
+    companyLogo: amazonLogo,
     role: "Software Engineering Intern",
     difficulty: "Medium",
     rounds: 3,
@@ -56,7 +76,7 @@ export const mockExperiences: Experience[] = [
     id: "2",
     userId: "u2",
     company: "Google",
-    companyLogo: "https://logo.clearbit.com/google.com",
+    companyLogo: googleLogo,
     role: "Software Engineer",
     difficulty: "Hard",
     rounds: 5,
@@ -73,7 +93,7 @@ export const mockExperiences: Experience[] = [
     id: "3",
     userId: "u3",
     company: "Microsoft",
-    companyLogo: "https://logo.clearbit.com/microsoft.com",
+    companyLogo: microsoftLogo,
     role: "Product Management Intern",
     difficulty: "Medium",
     rounds: 3,
@@ -90,7 +110,7 @@ export const mockExperiences: Experience[] = [
     id: "4",
     userId: "u4",
     company: "Goldman Sachs",
-    companyLogo: "https://logo.clearbit.com/goldmansachs.com",
+    companyLogo: goldmanSachsLogo,
     role: "Technology Analyst",
     difficulty: "Hard",
     rounds: 4,
@@ -107,7 +127,7 @@ export const mockExperiences: Experience[] = [
     id: "5",
     userId: "u5",
     company: "Oracle",
-    companyLogo: "https://logo.clearbit.com/oracle.com",
+    companyLogo: oracleLogo,
     role: "Application Developer",
     difficulty: "Easy",
     rounds: 2,
@@ -124,7 +144,7 @@ export const mockExperiences: Experience[] = [
     id: "6",
     userId: "u6",
     company: "Meta",
-    companyLogo: "https://logo.clearbit.com/meta.com",
+    companyLogo: metaLogo,
     role: "Frontend Engineer Intern",
     difficulty: "Hard",
     rounds: 4,
@@ -136,5 +156,22 @@ export const mockExperiences: Experience[] = [
     description: "Phone screen followed by two coding rounds with focus on React internals and JavaScript closures. The system design round asked me to design a real-time chat system. Very competitive — got positive feedback but didn't make the final cut.",
     upvotes: 38,
     createdAt: "2025-01-22",
+  },
+  {
+    id: "7",
+    userId: "u7",
+    company: "Infosys",
+    companyLogo: infosysLogo,
+    role: "Systems Engineer",
+    difficulty: "Easy",
+    rounds: 2,
+    problems: 3,
+    status: "Ongoing",
+    tags: ["Aptitude", "Java", "Communication"],
+    workType: "Onsite",
+    experienceLevel: "0-1 years",
+    description: "First round was an aptitude and coding test on their platform. Currently waiting for the technical interview round. The process seems straightforward so far with focus on basic programming and communication skills.",
+    upvotes: 8,
+    createdAt: "2025-03-20",
   },
 ];

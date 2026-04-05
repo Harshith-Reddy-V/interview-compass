@@ -15,9 +15,14 @@ const Index = () => {
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("All");
   const [sortBy, setSortBy] = useState("latest");
+  const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
     let result = [...mockExperiences];
+
+    if (selectedCompany) {
+      result = result.filter((e) => e.company === selectedCompany);
+    }
 
     if (search) {
       const q = search.toLowerCase();
@@ -37,7 +42,7 @@ const Index = () => {
     }
 
     return result;
-  }, [search, difficulty, sortBy]);
+  }, [search, difficulty, sortBy, selectedCompany]);
 
   return (
     <div className="min-h-screen">
@@ -61,12 +66,22 @@ const Index = () => {
       </section>
 
       <div className="container mx-auto px-4">
-        <CompanyCarousel />
+        <CompanyCarousel selectedCompany={selectedCompany} onCompanyClick={setSelectedCompany} />
 
         {/* Experiences */}
         <section className="py-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-foreground">Experiences</h2>
+            <h2 className="text-xl font-bold text-foreground">
+              {selectedCompany ? `${selectedCompany} Experiences` : "Experiences"}
+            </h2>
+            {selectedCompany && (
+              <button
+                onClick={() => setSelectedCompany(null)}
+                className="text-xs text-primary hover:underline"
+              >
+                Show all
+              </button>
+            )}
           </div>
 
           <ExperienceFilters

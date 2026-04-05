@@ -17,6 +17,7 @@ const difficultyColors: Record<string, string> = {
 const statusColors: Record<string, string> = {
   Selected: "text-success",
   Rejected: "text-destructive",
+  Ongoing: "text-primary",
 };
 
 const ExperienceCard = ({ experience }: Props) => {
@@ -49,6 +50,9 @@ const ExperienceCard = ({ experience }: Props) => {
           <img
             src={experience.companyLogo}
             alt={experience.company}
+            loading="lazy"
+            width={40}
+            height={40}
             className="h-10 w-10 rounded-lg object-contain bg-secondary p-1 flex-shrink-0"
             onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }}
           />
