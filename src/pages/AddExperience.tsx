@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
 const difficulties = ["Easy", "Medium", "Hard"];
-const statuses = ["Selected", "Rejected"];
+const statuses = ["Selected", "Rejected", "Ongoing"];
 const workTypes = ["Remote", "Onsite", "Hybrid"];
 
 const AddExperience = () => {

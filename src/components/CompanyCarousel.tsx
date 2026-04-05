@@ -2,13 +2,22 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { companies } from "@/data/mockData";
 
-const CompanyCarousel = () => {
+interface Props {
+  selectedCompany: string | null;
+  onCompanyClick: (name: string | null) => void;
+}
+
+const CompanyCarousel = ({ selectedCompany, onCompanyClick }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (dir: "left" | "right") => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: dir === "left" ? -280 : 280, behavior: "smooth" });
     }
+  };
+
+  const handleClick = (name: string) => {
+    onCompanyClick(selectedCompany === name ? null : name);
   };
 
   return (
@@ -28,11 +37,19 @@ const CompanyCarousel = () => {
         {companies.map((c) => (
           <div
             key={c.name}
-            className="flex-shrink-0 w-52 rounded-xl border border-border bg-card p-5 hover:border-primary/40 transition-all duration-200 cursor-pointer group"
+            onClick={() => handleClick(c.name)}
+            className={`flex-shrink-0 w-52 rounded-xl border p-5 transition-all duration-200 cursor-pointer group ${
+              selectedCompany === c.name
+                ? "border-primary bg-primary/10"
+                : "border-border bg-card hover:border-primary/40"
+            }`}
           >
             <img
               src={c.logo}
               alt={c.name}
+              loading="lazy"
+              width={40}
+              height={40}
               className="h-10 w-10 rounded-lg object-contain bg-secondary p-1 mb-3"
               onError={(e) => { (e.target as HTMLImageElement).src = "/placeholder.svg"; }}
             />
