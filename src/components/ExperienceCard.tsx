@@ -6,6 +6,7 @@ import { useState } from "react";
 
 interface Props {
   experience: Experience;
+  onClick?: () => void;
 }
 
 const difficultyColors: Record<string, string> = {
@@ -20,7 +21,7 @@ const statusColors: Record<string, string> = {
   Ongoing: "text-primary",
 };
 
-const ExperienceCard = ({ experience }: Props) => {
+const ExperienceCard = ({ experience, onClick }: Props) => {
   const { user } = useAuth();
   const [votes, setVotes] = useState(experience.upvotes);
   const [voted, setVoted] = useState(false);
@@ -44,7 +45,7 @@ const ExperienceCard = ({ experience }: Props) => {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-all duration-200 animate-fade-in">
+    <div onClick={onClick} className="rounded-xl border border-border bg-card p-5 hover:border-primary/30 transition-all duration-200 animate-fade-in cursor-pointer">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <img
