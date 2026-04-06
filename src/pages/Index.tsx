@@ -6,11 +6,12 @@ import CompanyCarousel from "@/components/CompanyCarousel";
 import ExperienceCard from "@/components/ExperienceCard";
 import ExperienceFilters from "@/components/ExperienceFilters";
 import { Button } from "@/components/ui/button";
-import { mockExperiences } from "@/data/mockData";
+import { useExperiences } from "@/contexts/ExperiencesContext";
 import { Plus } from "lucide-react";
 
 const Index = () => {
   const { user } = useAuth();
+  const { experiences } = useExperiences();
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("All");
@@ -18,7 +19,7 @@ const Index = () => {
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    let result = [...mockExperiences];
+    let result = [...experiences];
 
     if (selectedCompany) {
       result = result.filter((e) => e.company === selectedCompany);

@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { useExperiences } from "@/contexts/ExperiencesContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const difficulties = ["Easy", "Medium", "Hard"];
 const statuses = ["Selected", "Rejected", "Ongoing"];
@@ -13,6 +15,8 @@ const workTypes = ["Remote", "Onsite", "Hybrid"];
 
 const AddExperience = () => {
   const navigate = useNavigate();
+  const { addExperience } = useExperiences();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     company: "",
@@ -33,6 +37,7 @@ const AddExperience = () => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
+      addExperience(form, user?.id || "anonymous");
       toast.success("Experience submitted successfully!");
       setLoading(false);
       navigate("/");
