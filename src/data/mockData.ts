@@ -30,6 +30,8 @@ export interface Experience {
   description: string;
   upvotes: number;
   createdAt: string;
+  stipend?: string;
+  cgpa?: string;
 }
 
 export const companyLogos: Record<string, string> = {
@@ -71,6 +73,8 @@ export const mockExperiences: Experience[] = [
     description: "The interview process consisted of an online assessment with 2 coding questions, followed by two technical rounds focusing on data structures and algorithms. The final round was a behavioral interview discussing leadership principles.",
     upvotes: 24,
     createdAt: "2024-12-15",
+    stipend: "₹60,000/month",
+    cgpa: "8.5+",
   },
   {
     id: "2",
@@ -88,6 +92,8 @@ export const mockExperiences: Experience[] = [
     description: "Google's interview process was rigorous with 5 rounds. Two focused on coding with complex graph and dynamic programming problems. One system design round for designing a URL shortener, and two behavioral rounds.",
     upvotes: 45,
     createdAt: "2024-11-20",
+    stipend: "₹1,20,000/month",
+    cgpa: "9.0+",
   },
   {
     id: "3",
@@ -105,6 +111,8 @@ export const mockExperiences: Experience[] = [
     description: "Started with a phone screen about my background, followed by a product case study round where I had to improve Microsoft Teams for education. The final round was a cultural fit discussion with the hiring manager.",
     upvotes: 18,
     createdAt: "2025-01-05",
+    stipend: "₹50,000/month",
+    cgpa: "8.0+",
   },
   {
     id: "4",
@@ -122,6 +130,8 @@ export const mockExperiences: Experience[] = [
     description: "The HackerRank test had 5 coding questions in 90 minutes. Then two technical rounds covering OOP concepts, SQL queries, and data structures. The final round focused on puzzles and behavioral questions.",
     upvotes: 32,
     createdAt: "2025-02-10",
+    stipend: "₹80,000/month",
+    cgpa: "8.0+",
   },
   {
     id: "5",
@@ -139,6 +149,8 @@ export const mockExperiences: Experience[] = [
     description: "A fairly straightforward process — online assessment with Java and SQL questions, followed by a single technical interview covering core Java concepts, design patterns, and database fundamentals.",
     upvotes: 12,
     createdAt: "2025-03-01",
+    stipend: "₹45,000/month",
+    cgpa: "7.5+",
   },
   {
     id: "6",
@@ -156,6 +168,8 @@ export const mockExperiences: Experience[] = [
     description: "Phone screen followed by two coding rounds with focus on React internals and JavaScript closures. The system design round asked me to design a real-time chat system. Very competitive — got positive feedback but didn't make the final cut.",
     upvotes: 38,
     createdAt: "2025-01-22",
+    stipend: "₹1,00,000/month",
+    cgpa: "8.5+",
   },
   {
     id: "7",
@@ -173,5 +187,7 @@ export const mockExperiences: Experience[] = [
     description: "First round was an aptitude and coding test on their platform. Currently waiting for the technical interview round. The process seems straightforward so far with focus on basic programming and communication skills.",
     upvotes: 8,
     createdAt: "2025-03-20",
+    stipend: "₹25,000/month",
+    cgpa: "7.0+",
   },
 ];

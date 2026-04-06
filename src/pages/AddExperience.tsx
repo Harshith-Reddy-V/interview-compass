@@ -29,6 +29,8 @@ const AddExperience = () => {
     experienceLevel: "0-1 years",
     tags: "",
     description: "",
+    stipend: "",
+    cgpa: "",
   });
 
   const update = (key: string, val: string) => setForm((f) => ({ ...f, [key]: val }));
@@ -117,6 +119,17 @@ const AddExperience = () => {
           <div className="space-y-2">
             <Label>Tags (comma separated)</Label>
             <Input placeholder="DSA, System Design, Behavioral" value={form.tags} onChange={(e) => update("tags", e.target.value)} />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label>Stipend / Salary</Label>
+              <Input placeholder="e.g. ₹60,000/month" value={form.stipend} onChange={(e) => update("stipend", e.target.value)} />
+            </div>
+            <div className="space-y-2">
+              <Label>CGPA Cutoff</Label>
+              <Input placeholder="e.g. 8.0+" value={form.cgpa} onChange={(e) => update("cgpa", e.target.value)} />
+            </div>
           </div>
 
           <div className="space-y-2">

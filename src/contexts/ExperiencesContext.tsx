@@ -14,6 +14,8 @@ interface ExperiencesContextType {
     experienceLevel: string;
     tags: string;
     description: string;
+    stipend?: string;
+    cgpa?: string;
   }, userId: string) => void;
 }
 
@@ -45,6 +47,8 @@ export const ExperiencesProvider = ({ children }: { children: ReactNode }) => {
       description: data.description,
       upvotes: 0,
       createdAt: new Date().toISOString().split("T")[0],
+      stipend: data.stipend || undefined,
+      cgpa: data.cgpa || undefined,
     };
     setExperiences((prev) => [newExp, ...prev]);
   };

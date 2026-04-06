@@ -82,6 +82,16 @@ const ExperienceCard = ({ experience }: Props) => {
         <span className="text-xs px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground">
           {experience.experienceLevel}
         </span>
+        {experience.stipend && (
+          <span className="text-xs px-2 py-0.5 rounded-md bg-success/10 text-success">
+            💰 {experience.stipend}
+          </span>
+        )}
+        {experience.cgpa && (
+          <span className="text-xs px-2 py-0.5 rounded-md bg-accent text-accent-foreground">
+            📊 CGPA: {experience.cgpa}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-wrap gap-1.5 mt-2">
