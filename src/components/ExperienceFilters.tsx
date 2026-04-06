@@ -25,7 +25,7 @@ const ExperienceFilters = ({
 }: Props) => {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center flex-wrap">
         <div className="relative flex-1 w-full sm:max-w-xs">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -67,23 +67,24 @@ const ExperienceFilters = ({
             </button>
           ))}
         </div>
-      </div>
 
-      <div className="flex gap-1.5 flex-wrap items-center">
-        <span className="text-xs text-muted-foreground font-medium mr-1">Status:</span>
-        {statuses.map((s) => (
-          <button
-            key={s}
-            onClick={() => onStatusChange(s)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              status === s
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-secondary-foreground hover:bg-muted"
-            }`}
-          >
-            {s}
-          </button>
-        ))}
+        <span className="hidden sm:block w-px h-5 bg-border" />
+
+        <div className="flex gap-1.5 flex-wrap">
+          {statuses.map((s) => (
+            <button
+              key={s}
+              onClick={() => onStatusChange(s)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                status === s
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-secondary-foreground hover:bg-muted"
+              }`}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
