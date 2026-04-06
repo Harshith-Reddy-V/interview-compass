@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { Experience } from "@/data/mockData";
 import { useAuth } from "@/contexts/AuthContext";
 import Header from "@/components/Header";
 import CompanyCarousel from "@/components/CompanyCarousel";
@@ -8,6 +9,7 @@ import ExperienceFilters from "@/components/ExperienceFilters";
 import { Button } from "@/components/ui/button";
 import { useExperiences } from "@/contexts/ExperiencesContext";
 import { Plus } from "lucide-react";
+import ExperienceDetailModal from "@/components/ExperienceDetailModal";
 
 const Index = () => {
   const { user } = useAuth();
@@ -18,6 +20,7 @@ const Index = () => {
   const [sortBy, setSortBy] = useState("latest");
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
   const [status, setStatus] = useState("All");
+  const [selectedExp, setSelectedExp] = useState<Experience | null>(null);
 
   const filtered = useMemo(() => {
     let result = [...experiences];
@@ -108,12 +111,18 @@ const Index = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-6">
               {filtered.map((exp) => (
-                <ExperienceCard key={exp.id} experience={exp} />
+                <ExperienceCard key={exp.id} experience={exp} onClick={() => setSelectedExp(exp)} />
               ))}
             </div>
           )}
         </section>
       </div>
+
+      <ExperienceDetailModal
+        experience={selectedExp}
+        open={!!selectedExp}
+        onOpenChange={(open) => !open && setSelectedExp(null)}
+      />
     </div>
   );
 };
