@@ -92,6 +92,7 @@ const ExperienceCard = ({ experience }: Props) => {
             📊 CGPA: {experience.cgpa}
           </span>
         )}
+      </div>
 
       <div className="flex flex-wrap gap-1.5 mt-2">
         {experience.tags.map((tag) => (
