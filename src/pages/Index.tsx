@@ -17,6 +17,7 @@ const Index = () => {
   const [difficulty, setDifficulty] = useState("All");
   const [sortBy, setSortBy] = useState("latest");
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+  const [status, setStatus] = useState("All");
 
   const filtered = useMemo(() => {
     let result = [...experiences];
@@ -36,6 +37,10 @@ const Index = () => {
       result = result.filter((e) => e.difficulty === difficulty);
     }
 
+    if (status !== "All") {
+      result = result.filter((e) => e.status === status);
+    }
+
     if (sortBy === "upvotes") {
       result.sort((a, b) => b.upvotes - a.upvotes);
     } else {
@@ -43,7 +48,7 @@ const Index = () => {
     }
 
     return result;
-  }, [search, difficulty, sortBy, selectedCompany]);
+  }, [search, difficulty, sortBy, selectedCompany, status]);
 
   return (
     <div className="min-h-screen">
@@ -92,6 +97,8 @@ const Index = () => {
             onDifficultyChange={setDifficulty}
             sortBy={sortBy}
             onSortChange={setSortBy}
+            status={status}
+            onStatusChange={setStatus}
           />
 
           {filtered.length === 0 ? (
