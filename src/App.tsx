@@ -19,13 +19,13 @@ const App = () => (
       <BrowserRouter>
         <AuthProvider>
           <ExperiencesProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/add-experience" element={<AddExperience />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/add-experience" element={<AddExperience />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </ExperiencesProvider>
         </AuthProvider>
       </BrowserRouter>
